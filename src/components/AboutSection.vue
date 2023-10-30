@@ -51,7 +51,7 @@ export default {
 main{
     width:67%;
     border:1px solid white;
-    box-shadow:0px 0px 10px grey;
+    box-shadow:0px 0px 10px rgb(236, 236, 236);
     margin-top:1rem;
     background: #fff;
 }
@@ -83,6 +83,7 @@ h3{
     font-size:16px;
     padding-top:1rem; 
     color:hsl(176, 50%, 47%);
+    font-weight:400;
 }
 @media (max-width:768px){
    h3{
@@ -91,6 +92,7 @@ h3{
 }
 .header p {
     font-size:14px;
+    line-height:1.6;
     padding-top:1rem;
     color:hsl(0, 0%, 48%);
 }
@@ -106,7 +108,8 @@ h3{
 }
 #details{
     width:76%;
-    border:1px solid grey;
+    border:1px solid rgb(220, 219, 219);
+    border-radius:8px;
     margin-left:2.7rem;
     padding-left:1.5rem;
     margin-bottom:2rem;
@@ -123,6 +126,7 @@ h3{
 #details p{
     font-size:14px;
     color:hsl(0, 0%, 48%);
+    line-height:1.6;
 }
 @media (max-width:768px){
     #details p{
@@ -144,14 +148,15 @@ h3{
     }
 }
 button{
-    padding-top:8px;
-    padding-bottom:8px;
-    padding-right:16px;
-    padding-left:16px;
-    border-radius:8px;
+    padding-top:12px;
+    padding-bottom:12px;
+    padding-right:20px;
+    padding-left:20px;
+    border-radius:20px;
     border:none;
     background: hsl(176, 50%, 47%);
     color:#fff;
+    cursor: pointer;
 }
 @media (max-width:768px){
     button{
@@ -161,8 +166,19 @@ button{
 .details{
     opacity:0.5;
 }
+.details button{
+    pointer-events: none;
+    background: grey;
+}
 span{
     font-weight: 400;
+    font-size:12px;
     color:hsl(0, 0%, 48%);
+}
+strong{
+    font-size:20px;
+    display:flex;
+    align-items:center;
+    gap:4px;
 }
 </style>

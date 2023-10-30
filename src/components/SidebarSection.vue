@@ -40,9 +40,9 @@ nav{
   z-index:1500;
 }
 ul{
-  margin-left:-1.5rem;
+  padding-left:0;
   margin-bottom:1.5rem;
-  margin-top:-1rem;
+  margin-top:-0.5rem;
   
 }
 
@@ -53,7 +53,13 @@ ul{
 }
 li{
     list-style-type: none;
-    padding-top:2rem;
+    padding-top:1rem;
     font-weight:bold;
+    padding-left:8px;
+}
+li:not(:last-child){
+  content:"";
+  border-bottom:1px solid rgb(214, 212, 212);
+  padding-bottom:1rem;
 }
 </style>

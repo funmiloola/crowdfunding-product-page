@@ -18,6 +18,7 @@ export default {
 *{
   margin:0;
 }
+
 img{
   position:relative;
   margin-top:-8px;

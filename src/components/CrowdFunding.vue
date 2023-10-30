@@ -22,7 +22,7 @@
         <p>A beautiful bandcrafted monitor stand to reduce neck and eye strain</p>
         <div> 
             <button id="btn-project" @click="displayProject">Back this project</button>
-            <button id="btn-bookmark" @click="toggleBookmark" :class="{'reserved': clicked}">
+            <button id="btn-bookmark" @click="toggleBookmark"  :class="{ 'reversed': clicked }" >
                 <img src="@/assets/images/icon-bookmark.svg" alt="icon-bookmark" id="icon-bookmark">
                 <p>Bookmark</p>
             </button>
@@ -146,7 +146,7 @@ main{
 }
 section{
     border:1px solid #fff;
-    box-shadow: 0px 0px 10px grey;
+    box-shadow: 0px 0px 10px rgb(235, 235, 235);
     width:67%;
     background:#fff;
 }
@@ -169,6 +169,7 @@ section{
 }
 h1{
      text-align: center;
+     padding-top:12px;
 }
 section p {
     text-align: center;
@@ -179,37 +180,59 @@ section div{
     align-items: center;
     justify-content:space-between;
 }
-
 #btn-bookmark{
     display:flex;
     gap:0.5rem;
+    justify-content: flex-end;
     align-items: center;
-    margin-right:1.5rem;
-    border-radius:1rem;
+    margin-right:2.5rem;
+    border-radius:1.5rem;
     border:none;
-    padding-left:16px;
-    padding-right:16px;
-    background:#fff;
-    margin-bottom:1rem;
+    padding-right:0;
+    padding-left:2px;
+    background:#ebeaea;
+    margin-bottom:2rem;
+    margin-top:0.8rem;
+    cursor:pointer;
+    outline:none;
+}
+@media (max-width:768px){
+    #btn-bookmark{
+        margin-right:1.5rem;
+    }
+}
+#btn-bookmark p {
+    padding-right:12px;
 }
 #btn-project{
-    padding-top:10px;
-    padding-bottom:10px;
-    padding-left:20px;
-    padding-right:20px;
+    padding-top:14px;
+    padding-bottom:14px;
+    padding-left:22px;
+    padding-right:22px;
     color:#fff;
     background:hsl(176, 50%, 47%);
     border:none;
-    margin-left:1.5rem;
-    border-radius:1rem;
-    margin-bottom:1rem;
+    margin-left:2.5rem;
+    margin-top:0.8rem;
+    border-radius:1.5rem;
+    margin-bottom:2rem;
+    cursor:pointer;
+}
+@media (max-width:768px){
+    #btn-project{
+        padding-left:16px;
+        padding-right:16px;
+        margin-left:1.5rem;
+    }
 }
 #icon-bookmark{
-    width:24px;
+    width:40px;
+    margin:0;
+   
 }
 #pledge-section{
     border:1px solid #fff;
-    box-shadow: 0px 0px 10px grey;
+    box-shadow: 0px 0px 10px rgb(226, 225, 225);
     width:67%;
     margin-top:1rem;
 }
@@ -220,16 +243,29 @@ section div{
 }
 #pledge-details{
     display:flex;
-    gap:6rem;
-    padding-left:2rem;
+    gap:3rem;
+    padding-left:4rem;
     padding-right:3rem;
+    padding-top:1.5rem;
+}
+#pledge-details p:not(:last-child){
+    content:"";
+    padding-right:2rem;
+    border-right:1px solid rgb(214, 212, 212);
+}
+@media (max-width:768px){
+    #pledge-details p:not(:last-child){
+        border-right:none;
+        border-bottom: 1px solid rgb(214, 212, 212);
+        padding-bottom:2.5rem;
+    }
 }
 @media (max-width:768px){
     #pledge-details{
         flex-direction:column;
         padding-left:0;
         padding-right:0;
-        gap:1rem;
+        gap:0;
         align-items: center;
     }
 }
@@ -249,8 +285,8 @@ span{
     width:85%;
     border:1px solid #fff;
     background: rgb(250, 247, 247);
-    margin-bottom:1rem;
-    margin-left:2.2rem;
+    margin-bottom:2.5rem;
+    margin-left:3rem;
     border-radius:0.5rem;
 }
 @media (max-width:768px){
@@ -263,19 +299,8 @@ span{
     background: hsl(176, 50%, 47%);
     border-radius:4px;
 }
-.reserved{
+.reversed{
     flex-direction: row-reverse;
-    color:hsl(176, 50%, 47%);
+    background: hsl(176, 50%, 47%);
 }
-
-/* #nav-logo{
-    width:128px;
-}
-@media(max-width){
-    #nav-logo{
-        width:5px;
-        height: 2px;
-    
-    }
-} */
 </style>

@@ -9,14 +9,17 @@
     <section>
         <h2>Want to support us in bringing Mastercraft Bamboo Monitor Riser out in the world?</h2>
         <div class="pledge-reward">
-            <h3>Pledge with no reward</h3>
+            <div class="pledge-form">
+            <input type="radio" id="pledge"/>
+            <label for="pledge">Pledge with no reward</label>
+            </div>             
             <p>Choose to support us without a reward if you simply believe in our project.As a backer,you will be signed up to receive product updates via email.</p>
         </div>
-        <div id="details" v-for="detail in details"  :key="detail.id" :class="{'selected': isSelected === detail }"> 
-            <div :class="{'details':detail.amount === 0}">
+        <div v-for="detail in details"  :key="detail.id" @click="displaySection(detail)" :class="{ 'amt-section': detail.amount === 0, 'selected': isSelected === detail}" class="pledge-details"
+    >
             <div class="label">
                 <div class="input">
-             <input type="radio" id="detail" name="detail" v-model="isSelected" @change="displaySection(detail)"/>
+             <input type="radio"   ref="radioInput" id="detail" name="detail" />
              <label for="details" >{{detail.label}}   <span>{{detail.pledge}}</span></label>
                 </div>
              <p>{{detail.amount}} <span>{{detail.span}}</span></p>
@@ -29,7 +32,6 @@
                     <button id="btn-amount">{{detail.btnAmount}}</button>
                     <button id="btn-continue">{{detail.btnContinue}}</button>
                 </div>
-            </div>
             </div>
         </div>
     </section>
@@ -48,9 +50,9 @@ export default {
   data() {
     return {
         details: [
-            {id:1, label:'Bamboo Stand', pledge:'Pledge $25 or more', amount:'101', span:'left', content:"You get an ergonomic stand made of natural bamboo.You've helped us launch our promotional campaign,and you'll be added to a special Backer member list.", pledgeEntry:'Enter your pledge', btnAmount:'$25', btnContinue:'Continue'},
-            {id:2, label:'Black Edition Stand',  pledge:'Pledge $75 or more', amount:'64', span:'left', content:"You get a Black Special Edition computer stand and a personal thank you.You'll be added to our Backer member list.Shopping is included.", pledgeEntry:'Enter your pledge', btnAmount:'$25', btnContinue:'Continue'},
-            {id:3, label:'Mahogamy Special Edition', pledge:'Pledge $200 or more', amount:'0', span:'left', content:"You get two Special Edition Mahogany stands,a Backer T-Shirt and a personal thank you.You'll be added to our Backer member list.Shipping is included", pledgeEntry:'Enter your pledge', btnAmount:'$25', btnContinue:'Continue'}
+            {id:1, label:'Bamboo Stand', pledge:'Pledge $25 or more', amount:101, span:'left', content:"You get an ergonomic stand made of natural bamboo.You've helped us launch our promotional campaign,and you'll be added to a special Backer member list.", pledgeEntry:'Enter your pledge', btnAmount:'$25', btnContinue:'Continue'},
+            {id:2, label:'Black Edition Stand',  pledge:'Pledge $75 or more', amount:64, span:'left', content:"You get a Black Special Edition computer stand and a personal thank you.You'll be added to our Backer member list.Shopping is included.", pledgeEntry:'Enter your pledge', btnAmount:'$25', btnContinue:'Continue'},
+            {id:3, label:'Mahogamy Special Edition', pledge:'Pledge $200 or more', amount:0, span:'left', content:"You get two Special Edition Mahogany stands,a Backer T-Shirt and a personal thank you.You'll be added to our Backer member list.Shipping is included", pledgeEntry:'Enter your pledge', btnAmount:'$25', btnContinue:'Continue'}
         ],
         isSelected:false
         
@@ -59,6 +61,7 @@ export default {
   methods:{
     displaySection(detail){
       this.isSelected = detail;
+      this.$refs.radioInput.click();
     }
     }
   
@@ -84,8 +87,10 @@ main{
     border-radius:8px;
     background: #fff;
     z-index:1500;
-    overflow-y: auto; 
-    
+    overflow-y: auto;    
+}
+main::-webkit-scrollbar{
+    display:none;
 }
 @media (max-width:768px){
     main{
@@ -96,6 +101,7 @@ img{
    float:right;
    padding-right: 2rem;
    padding-top:0.5rem;
+   cursor:pointer;
 }
 @media (max-width:768px){
     img{
@@ -139,7 +145,8 @@ h2{
     }
 }
 .pledge-reward{
-    border:1px solid grey;
+    border:1px solid rgb(220, 219, 219);
+    border-radius:4px;
     width:90%;
     margin-left:auto;
     margin-right:auto;
@@ -151,9 +158,13 @@ h2{
         border-radius:8px;
     }
 }
-h3{
-    font-size:15px;
-    padding-left:2rem;
+
+.pledge-form{
+    padding-top:2rem;
+    display: flex;
+    gap:10px;
+    padding-left:1rem;
+    align-items: center;
 }
 @media (max-width:768px){
     h3{
@@ -162,9 +173,10 @@ h3{
 }
 .pledge-reward p{
     font-size:15px;
-    padding-left:2rem;
+    padding-left:2.8rem;
     padding-bottom: 1rem;
     color:hsl(0, 0%, 48%);
+    line-height: 1.5;
 }
 @media (max-width:768px){
     .pledge-reward p{ 
@@ -174,24 +186,25 @@ h3{
         padding-bottom:0.5rem;
     }
 }
-#details{
+.pledge-details{
    width:90%;
-   border:1px solid grey;
+   border:1px solid rgb(225, 225, 225);
    margin-left:auto;
    margin-right:auto;
    margin-bottom:1.5rem;
    border-radius:8px;
 }
 .selected {
-    border:1px solid hsl(176, 50%, 47%);
+    border:2px solid hsl(176, 50%, 47%);
 }
 #content{
     font-size:15px;
     font-weight:400;
-    padding-left:1rem;
-    padding-right:1rem;
+    padding-left:3rem;
+    padding-right:1.3rem;
     padding-bottom:1rem;
     color:hsl(0, 0%, 48%);
+    line-height:1.5;
 }
 @media (max-width:768px){
     #content{
@@ -219,8 +232,11 @@ h3{
     margin-bottom:-1rem;
 }
 .label p{
-    font-size:15px;
+    font-size:16px;
     font-weight: 700;
+    display:flex;
+    gap:4px;
+    align-items:center;
 }
 @media (max-width:768px){
     .label p{
@@ -229,6 +245,7 @@ h3{
 }
 .label p span{
     font-weight:400;
+    font-size:11px;
     color:hsl(0, 0%, 48%);
 }
 label{
@@ -247,6 +264,7 @@ label{
 label span{
     padding-left:8px;
     color:hsl(176, 50%, 47%);
+    
 }
 @media(max-width:768px){
     label span{
@@ -268,6 +286,9 @@ label span{
         flex-direction: column;
     }
 }
+.pledge-section p {
+    color:rgb(175, 175, 175);
+}
 @media (max-width:768px){
     .pledge-section p {
         font-size:12px;
@@ -278,14 +299,14 @@ label span{
     gap:10px;
 }
 #btn-amount{
-    padding-left:1rem;
-    padding-right:1.5rem;
+    padding-left:1.5rem;
+    padding-right:2rem;
     padding-top:0.7rem;
     padding-bottom:0.7rem;
+    background: rgb(235, 235, 235);
     border:none;
-    border-radius:1rem;
-    background: hsl(176, 50%, 47%);
-    color:#fff;
+    border-radius:1.2rem;
+    font-weight: 700;
 }
 @media (max-width:768px){
     #btn-amount{
@@ -301,6 +322,8 @@ label span{
     padding-right:1rem;
     padding-top:0.7rem;
     padding-bottom:0.7rem;
+    background: hsl(176, 50%, 47%);
+    color:#fff;
     border:none;
     border-radius:1rem;
 }
@@ -311,8 +334,11 @@ label span{
         border-radius:1rem;
     }
 }
-.details{
+.amt-section{
     opacity:0.5;
+}
+.amt-section input{
+    pointer-events: none;
 }
 #pledge-left{
    display:none;
@@ -323,12 +349,12 @@ label span{
         display: block;
         padding-left:1rem;
         font-weight: 700;
+
     }
 }
 @media (max-width:769px){
     #pledge-left span{
         font-weight:400;
-        color:hsl(0, 0%, 48%);
     }
 }
 </style>
