@@ -61,9 +61,16 @@ export default {
   methods:{
     displaySection(detail){
       this.isSelected = detail;
-      this.$refs.radioInput.click();
+      this.$refs.radioInput[detail.id - 1].click();
     }
-    }
+    },
+    watch: {
+    showProject: function(newShowProject) {
+      if (!newShowProject) {
+        this.isSelected = false;
+      }
+    },
+  },
   
 }
 </script>

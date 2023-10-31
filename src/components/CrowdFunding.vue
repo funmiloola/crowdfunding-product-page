@@ -228,7 +228,6 @@ section div{
 #icon-bookmark{
     width:40px;
     margin:0;
-   
 }
 #pledge-section{
     border:1px solid #fff;
